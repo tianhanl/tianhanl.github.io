@@ -28,6 +28,7 @@ body {
 .profile-box a {
   position: relative;
   padding: 0 0.2em;
+  font-size: 1.25rem;
   text-decoration: none;
   transition: all 0.1s;
   color: #9f9f9f;
@@ -50,6 +51,7 @@ body {
 
 .profile-name {
   margin: 0;
+  font-size: 2.5rem;
   text-transform: uppercase;
   color: #f07883;
   letter-spacing: 0.1em;
@@ -57,19 +59,44 @@ body {
 
 .profile-description {
   margin: 0;
+  font-size: 1.25rem;
   margin-top: 0.75rem;
   letter-spacing: 0.1em;
   color: #9f9f9f;
 }
 
 .profile-link-container {
-  margin-top: 2.5rem;
+  margin-top: 2.5em;
   position: relative;
   display: flex;
   justify-content: space-around;
+  letter-spacing: 0.1em;
   padding: 0;
 }
 
 .profile-link-item {
   flex: 1 1 30%;
+}
+
+@media (max-width: 480px) {
+  .profile-box {
+    margin-top: -20%;
+  }
+
+  .profile-name {
+    font-size: 2.25rem;
+  }
+
+  .profile-description {
+    font-size: 1.25rem;
+  }
+  .profile-link-container {
+    margin-top: 2.25em;
+    flex-direction: column;
+  }
+
+  .profile-link-item {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
 }
