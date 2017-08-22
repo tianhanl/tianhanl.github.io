@@ -17,28 +17,41 @@ body {
 .profile-box {
   overflow: hidden;
   padding: 1em;
-  margin-top: -10%;
+  margin-top: -5%;
   text-align: center;
 }
 
 .profile-box li {
   list-style: none;
-  color: #515151;
 }
 
 .profile-box a {
+  position: relative;
+  padding: 0 0.2em;
   text-decoration: none;
-  color: #515151;
-  transition: color 0.1s;
+  transition: all 0.1s;
+  color: #9f9f9f;
 }
 
-.profile-box a:hover {
-  color: #f07883;
+.profile-box a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 0;
+  transition: all 0.2s;
+  border-top: 0.3em solid #f07883;
+}
+
+.profile-box a:hover::after {
+  width: 100%;
+  transition: all 0.1s;
 }
 
 .profile-name {
   margin: 0;
-  color: #f05967;
+  text-transform: uppercase;
+  color: #f07883;
   letter-spacing: 0.1em;
 }
 
@@ -46,7 +59,7 @@ body {
   margin: 0;
   margin-top: 0.75rem;
   letter-spacing: 0.1em;
-  color: #515151;
+  color: #9f9f9f;
 }
 
 .profile-link-container {
