@@ -95,8 +95,33 @@ body {
     flex-direction: column;
   }
 
+  .profile-box a {
+    font-size: 1.25rem;
+  }
+
   .profile-link-item {
-    font-size: 1rem;
     margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-box {
+    margin-top: -20%;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-description {
+    font-size: 1rem;
+  }
+
+  .profile-link-container {
+    margin-top: 2rem;
+  }
+
+  .profile-box a {
+    font-size: 1rem;
   }
 }
