@@ -36,10 +36,10 @@
   </div>
   <script src="./js/baffle.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    const descriptions = ['web developer', 'video gamer', 'USC student']
+    const descriptions = ['web developer', 'video gamer', 'USC Trojan'];
     const description = window.baffle('.profile-description-name', {
       characters: 'abcdefghijklmnopqrstuvwxyz',
-      speed: 60
+      speed: 75
     });
     const changeDescription = function (text) {
       description.start();
@@ -52,7 +52,7 @@
         }
       })
       description.reveal(1000);
-      setTimeout(changeDescription, 4000);
+      setTimeout(changeDescription, 3500);
     }
     let currPos = 0;
     var id = setTimeout(changeDescription, 0)
