@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebapckPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: path.join(__dirname, 'src', 'index'),
@@ -25,5 +26,6 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     publicPath: path.join('/dist/')
-  }
+  },
+  plugins: [new HtmlWebapckPlugin()]
 };
