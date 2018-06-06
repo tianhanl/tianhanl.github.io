@@ -26,9 +26,12 @@
     "webpack-cli": "^2.1.4"
   },
   "dependencies": {
+    "bunny": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "three": "^0.93.0",
+    "three-buffer-vertex-data": "^1.1.0",
     "three-orbit-controls": "^82.1.0",
+    "unindex-mesh": "^2.0.0",
     "webpack-dev-server": "^3.1.4"
   }
 }

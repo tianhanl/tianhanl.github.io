@@ -1,5 +1,6 @@
-const THREE = require('three');
+global.THREE = require('three');
 const OrbitControls = require('three-orbit-controls')(THREE);
+const createBunnyGeometry = require('./createBunnyGeometry');
 
 class App {
   constructor(canvasContainer, config) {
@@ -35,8 +36,8 @@ class App {
   createCamera() {
     let aspectRatio = this.WIDTH / this.HEIGHT;
     let fieldOfView = 60;
-    let nearPlane = 1;
-    let farPlane = 10000;
+    let nearPlane = 0.01;
+    let farPlane = 1000;
     const camera = new THREE.PerspectiveCamera(
       fieldOfView,
       aspectRatio,
@@ -44,7 +45,7 @@ class App {
       farPlane
     );
     camera.position.x = 0;
-    camera.position.z = 150;
+    camera.position.z = 6;
     camera.position.y = 0;
     return camera;
   }
@@ -108,11 +109,11 @@ class App {
   }
 
   addObjs(vertexShader, fragmentShader) {
-    let obj = new THREE.SphereGeometry(40, 40, 40);
+    let obj = createBunnyGeometry({ flat: true });
     let uniforms = {
       color: {
         type: 'v3',
-        value: new THREE.Color('#5B93A6')
+        value: new THREE.Color('#F07883')
       }
     };
     let mat = new THREE.ShaderMaterial({
@@ -123,7 +124,7 @@ class App {
       depthTest: false,
       transparent: true
     });
-    let particleSystem = new THREE.ParticleSystem(obj, mat);
+    let particleSystem = new THREE.Mesh(obj, mat);
     this.scene.add(particleSystem);
   }
 
