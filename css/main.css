@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+body {
+  scroll-behavior: unset;
+}
+
 .container {
   display: flex;
   position: absolute;

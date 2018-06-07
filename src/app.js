@@ -11,17 +11,26 @@ class App {
     this.camera = this.createCamera();
     this.renderer = this.createRender();
     this.container.appendChild(this.renderer.domElement);
-    window.addEventListener(
-      'resize',
-      this.handleWindowResize.bind(this),
-      false
-    );
     this.orbitControls = new OrbitControls(this.camera);
     this.orbitControls.autoRotate = true;
 
     // add objects
     this.createLights();
+    this.uniforms = {
+      color: {
+        type: 'v3',
+        value: new THREE.Color('#F07883')
+      },
+      u_time: { type: 'f', value: 1.0 },
+      u_resolution: { type: 'v2', value: new THREE.Vector2() },
+      u_mouse: { type: 'v2', value: new THREE.Vector2() }
+    };
     this.addObjs(vertexShader, fragmentShader);
+    window.addEventListener(
+      'resize',
+      this.handleWindowResize.bind(this),
+      false
+    );
     this.render();
   }
 
@@ -103,6 +112,8 @@ class App {
   handleWindowResize() {
     this.HEIGHT = window.innerHeight;
     this.WIDTH = window.innerWidth;
+    this.uniforms.u_resolution.value.x = this.WIDTH;
+    this.uniforms.u_resolution.value.y = this.HEIGHT;
     this.renderer.setSize(this.WIDTH, this.HEIGHT);
     this.camera.aspect = this.WIDTH / this.HEIGHT;
     this.camera.updateProjectionMatrix();
@@ -110,14 +121,8 @@ class App {
 
   addObjs(vertexShader, fragmentShader) {
     let obj = createBunnyGeometry({ flat: true });
-    let uniforms = {
-      color: {
-        type: 'v3',
-        value: new THREE.Color('#F07883')
-      }
-    };
     let mat = new THREE.ShaderMaterial({
-      uniforms: uniforms,
+      uniforms: this.uniforms,
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
       blending: THREE.AdditiveBlending,
@@ -129,6 +134,7 @@ class App {
   }
 
   render() {
+    this.uniforms.u_time.value += 0.05;
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(() => {
       this.render();
