@@ -40,7 +40,7 @@ class App {
     this.uniforms.u_resolution.value.x = this.WIDTH;
     this.uniforms.u_resolution.value.y = this.HEIGHT;
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog('#090918', 1, 600);
+    scene.fog = new THREE.FogExp2('#171A22', 0.0000025);
     return scene;
   }
 
