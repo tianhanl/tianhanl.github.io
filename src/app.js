@@ -7,6 +7,15 @@ class App {
     this.container = canvasContainer || document.body;
     const { height, width, vertexShader, fragmentShader } = config;
     // set up envrionment
+    this.uniforms = {
+      color: {
+        type: 'v3',
+        value: new THREE.Color('#A8A8A8')
+      },
+      u_time: { type: 'f', value: 1.0 },
+      u_resolution: { type: 'v2', value: new THREE.Vector2() },
+      u_mouse: { type: 'v2', value: new THREE.Vector2() }
+    };
     this.scene = this.createScene(height, width);
     this.camera = this.createCamera();
     this.renderer = this.createRender();
@@ -16,15 +25,6 @@ class App {
 
     // add objects
     this.createLights();
-    this.uniforms = {
-      color: {
-        type: 'v3',
-        value: new THREE.Color('#F07883')
-      },
-      u_time: { type: 'f', value: 1.0 },
-      u_resolution: { type: 'v2', value: new THREE.Vector2() },
-      u_mouse: { type: 'v2', value: new THREE.Vector2() }
-    };
     this.addObjs(vertexShader, fragmentShader);
     window.addEventListener(
       'resize',
@@ -37,6 +37,8 @@ class App {
   createScene(height, width) {
     this.HEIGHT = height;
     this.WIDTH = width;
+    this.uniforms.u_resolution.value.x = this.WIDTH;
+    this.uniforms.u_resolution.value.y = this.HEIGHT;
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog('#090918', 1, 600);
     return scene;
@@ -129,7 +131,7 @@ class App {
       depthTest: false,
       transparent: true
     });
-    let particleSystem = new THREE.Mesh(obj, mat);
+    let particleSystem = new THREE.ParticleSystem(obj, mat);
     this.scene.add(particleSystem);
   }
 
