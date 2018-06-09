@@ -14,7 +14,7 @@ module.exports = function(opt = {}) {
     data.attr(geometry, 'position', primitive.positions);
   }
   geometry.center();
-  geometry.scale(0.5, 0.5, 0.5);
+  geometry.scale(1, 1, 1);
   geometry.computeVertexNormals();
 
   return geometry;
