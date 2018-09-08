@@ -6,6 +6,8 @@ body {
 
 body {
   scroll-behavior: unset;
+  overflow: hidden;
+  background: #171a22;
 }
 
 .container {
